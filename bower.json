@@ -1,0 +1,18 @@
+{
+  "name": "angular-spinners",
+  "version": "0.0.0",
+  "authors": [
+    "Alex Ford <alex.ford@codetunnel.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.1"
+  }
+}
