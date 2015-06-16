@@ -1,4 +1,4 @@
-angular.module('spinners', [])
+angular.module('angularSpinners', [])
   .factory('spinnerService', function () {
     var spinners = {};
     return {
@@ -78,7 +78,7 @@ angular.module('spinners', [])
     };
   });
 
-angular.module('spinners')
+angular.module('angularSpinners')
   .directive('spinner', function () {
     return {
       restrict: 'EA',

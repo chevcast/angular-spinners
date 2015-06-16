@@ -1,4 +1,4 @@
-angular.module('spinners')
+angular.module('angularSpinners')
   .directive('spinner', function () {
     return {
       restrict: 'EA',

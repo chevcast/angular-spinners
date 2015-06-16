@@ -1,4 +1,4 @@
-angular.module('spinners', [])
+angular.module('angularSpinners', [])
   .factory('spinnerService', function () {
     var spinners = {};
     return {
