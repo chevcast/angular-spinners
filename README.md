@@ -203,7 +203,7 @@ Hopefully it's obvious that this method will show every single spinner registere
 
 #### hideAll
 
-The `hideAll` method is identical to `showAll` except it hides every spinner that is registered. This method also isn't used very often but is extremely useful in global error handlers. For example, you could override the [default Angular exception handler](https://github.com/angular/angular.js/blob/master/src/ng/exceptionHandler.js#L43-L49) like so:
+The `hideAll` method is identical to `showAll` except it hides every spinner that is registered. This method also isn't used very often but is extremely useful in global error handlers. For example, you could override the [default Angular exception handler](https://github.com/angular/angular.js/blob/720012eab6fef5e075a1d6876dd2e508c8e95b73/src/ng/exceptionHandler.js#L43-L49) like so:
 
 ```javascript
 // Override Angular $exceptionHandler service.
