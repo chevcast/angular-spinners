@@ -90,10 +90,10 @@ angular.module('angularSpinners')
       scope: {
         name: '@?',
         group: '@?',
-        show: '@?',
+        show: '=?',
         imgSrc: '@?',
         register: '@?',
-        onRegister: '&?'
+        onLoaded: '&?'
       },
       template: [
         '<span ng-show="show">',
@@ -121,7 +121,7 @@ angular.module('angularSpinners')
         if ($scope.register) {
           spinnerService._register(api);
         }
-        $scope.onRegister({ spinnerService: spinnerService, spinnerApi: api });
+        $scope.onLoaded({ spinnerService: spinnerService, spinnerApi: api });
       }]
     };
   });
