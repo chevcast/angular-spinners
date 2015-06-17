@@ -122,6 +122,8 @@ By default all spinners register themselves with the spinner service. If for som
 <spinner img-src="/path/to/loader.gif" register="false"></spinner>
 ```
 
+> NOTE: Keep in mind that if you disable spinner registration then this spinner will not be tracked by the spinner service at all. It won't even hide if you call `spinnerService.hideAll()`.
+
 If you do this then you'll want to manually get reference to that spinner's API so you can talk to it directly in order to hide/show it. You can do that with the `onLoaded` option below.
 
 #### onLoaded
