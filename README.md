@@ -98,10 +98,10 @@ app.controller('myController', function ($scope, $http) {
 </div>
 ```
 
-Because `show` is two-way bound, if you want to pass in a simple `true`/`false` then you need to wrap it in single quotes. This is because two-way bound options on directives expect a variable to bind to. By passing in a value in quotes you technically are passing in an implicit variable with a string value; it just isn't tracked by anything and you won't see the effects of two-way binding since the binding is against a static variable.
+You can also just pass a simple boolean value to the option. For example, you could show the spinner by default and ignore the effects of two-way binding by simply passing `true` to the `show` option.
 
 ```html
-<spinner name="mySpinner" show="'true'"></spinner>
+<spinner name="mySpinner" show="true"></spinner>
 ```
 
 #### imgSrc
