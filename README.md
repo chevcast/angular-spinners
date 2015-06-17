@@ -15,7 +15,7 @@ Using spinners is extremely simple with this library. First make sure that your 
 var myApp = angular.module('myApp', ['angularSpinners']);
 ```
 
-Once your dependency is specified then you can begin creating spinners. To do so, use the spinner directive. All spinners must specify a `name` attribute.
+Once your dependency is specified then you can begin creating spinners. To do so, use the spinner directive.
 
 ```html
 <div ng-controller="booksController">
@@ -56,9 +56,9 @@ A working demo can be found here: http://codepen.io/Chevex/pen/bdrxqb
 
 Several options are available and you specify them as attributes on your directives. The directive can be used as a standalone element or as an attribute.
 
-#### name (required)
+#### name
 
-The name attribute is required. It is what you must pass to the service when trying to show/hide that specific spinner.
+The name attribute is required if the `register` option is `true`. It is what you must pass to the service when trying to show/hide that specific spinner.
 
 ```html
 <spinner name="mySpinner"></spinner>
