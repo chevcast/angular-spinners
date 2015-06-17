@@ -3,6 +3,9 @@ angular.module('angularSpinners', [])
     var spinners = {};
     return {
       _register: function (data) {
+        if (!data.hasOwnProperty('name')) {
+          throw new Error("Spinner must specify a name when registering with the spinner service.");
+        }
         if (spinners.hasOwnProperty(data.name)) {
           throw new Error("A spinner with the name '" + data.name + "' has already been registered.");
         }
@@ -85,7 +88,7 @@ angular.module('angularSpinners')
       replace: true,
       transclude: true,
       scope: {
-        name: '@',
+        name: '@?',
         group: '@?',
         show: '@?',
         imgSrc: '@?',
@@ -99,28 +102,26 @@ angular.module('angularSpinners')
         '</span>'
       ].join(''),
       controller: ["$scope", "spinnerService", function ($scope, spinnerService) {
-        if (!$scope.hasOwnProperty('name')) {
-          throw new Error("Spinner must specify a name.");
-        }
         if (!$scope.hasOwnProperty('register')) {
           $scope.register = true;
         }
+        var api = {
+          name: $scope.name,
+          group: $scope.group,
+          show: function () {
+            $scope.show = true;
+          },
+          hide: function () {
+            $scope.show = false;
+          },
+          toggle: function () {
+            $scope.show = !$scope.show;
+          }
+        };
         if ($scope.register) {
-          spinnerService._register({
-            name: $scope.name,
-            group: $scope.group,
-            show: function () {
-              $scope.show = true;
-            },
-            hide: function () {
-              $scope.show = false;
-            },
-            toggle: function () {
-              $scope.show = !$scope.show;
-            }
-          });
+          spinnerService._register(api);
         }
-        $scope.onRegister({ spinnerService: spinnerService });
+        $scope.onRegister({ spinnerService: spinnerService, spinnerApi: api });
       }]
     };
   });

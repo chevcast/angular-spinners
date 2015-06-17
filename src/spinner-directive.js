@@ -18,7 +18,7 @@ angular.module('angularSpinners')
         '  <span ng-transclude></span>',
         '</span>'
       ].join(''),
-      controller: ["$scope", "spinnerService", function ($scope, spinnerService) {
+      controller: function ($scope, spinnerService) {
         if (!$scope.hasOwnProperty('register')) {
           $scope.register = true;
         }
@@ -39,6 +39,6 @@ angular.module('angularSpinners')
           spinnerService._register(api);
         }
         $scope.onRegister({ spinnerService: spinnerService, spinnerApi: api });
-      }]
+      }
     };
   });
