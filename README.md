@@ -48,7 +48,7 @@ myApp.controller('booksController', function ($scope, $http, spinnerService) {
 });
 ```
 
-A working demo can be found here: http://codepen.io/Chevex/pen/bdrxqb
+Here is a working demo: http://codepen.io/Chevex/pen/pvoLgB/
 
 ---
 
