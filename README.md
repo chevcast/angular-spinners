@@ -95,7 +95,7 @@ If you want to disable the loading image entirely then simply do not specify the
 By default all spinners register themselves with the spinner service. If for some reason you don't want this to happen, simply set `register` to `false`.
 
 ```html
-<spinner name="mySpinner" register="false"></spinner>
+<spinner img-src="/path/to/loader.gif" register="false"></spinner>
 ```
 
 If you do this then you'll want to manually get reference to that spinner's API so you can talk to it directly in order to hide/show it. You can do that with the `onRegister` option below.
