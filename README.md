@@ -74,10 +74,34 @@ Optionally a group name may be specified so that you can show/hide groups of spi
 
 #### show
 
-By default all spinners are hidden when first registered. You can change set a spinner to be visible by default by setting the `show` option.
+By default all spinners are hidden when first registered. You can change set a spinner to be visible by default by setting the `show` option. Unlike other options, this one is two-way bound and expects you to pass in a variable from the parent scope of the directive. This allows you to automatically hide/show the spinner based on some boolean from your application. This is likely similar to the way you've done spinners in the past and is included here for convenience. I want to ensure you have multiple intuitive ways to control your spinner(s) how you see fit.
+
+```javascript
+app.controller('myController', function ($scope, $http) {
+  $scope.loading = true;
+  $http.get('/path/to/data')
+    .success(function (data) {
+      // do stuff with data
+    }) 
+    .catch(function (err) {
+      // handle error
+    })
+    .finally(function () {
+      $scope.loading = false;
+    });
+});
+```
 
 ```html
-<spinner name="mySpinner" show="true"></spinner>
+<div ng-controller="myController">
+  <spinner name="mySpinner" show="loading"></spinner>
+</div>
+```
+
+Because `show` is two-way bound, if you want to pass in a simple `true`/`false` then you need to wrap it in single quotes. This is because two-way bound options on directives expect a variable to bind to. By passing in a value in quotes you technically are passing in an implicit variable with a string value; it just isn't tracked by anything and you won't see the effects of two-way binding since the binding is against a static variable.
+
+```html
+<spinner name="mySpinner" show="'true'"></spinner>
 ```
 
 #### imgSrc
@@ -98,14 +122,14 @@ By default all spinners register themselves with the spinner service. If for som
 <spinner img-src="/path/to/loader.gif" register="false"></spinner>
 ```
 
-If you do this then you'll want to manually get reference to that spinner's API so you can talk to it directly in order to hide/show it. You can do that with the `onRegister` option below.
+If you do this then you'll want to manually get reference to that spinner's API so you can talk to it directly in order to hide/show it. You can do that with the `onLoaded` option below.
 
-#### onRegister
+#### onLoaded
 
-Sometimes you need to know when a spinner is loaded and registered with the spinner service. To be notified of this simpy supply an an Angular expression to the `onRegister` option.
+Sometimes you need to know when a spinner is loaded and registered with the spinner service. To be notified of this simpy supply an an Angular expression to the `onLoaded` option.
 
 ```html
-<spinner name="mySpinner" on-register="spinnerLoaded(spinnerApi);"></spinner>
+<spinner name="mySpinner" on-loaded="spinnerLoaded(spinnerApi);"></spinner>
 ```
 
 ```javascript
