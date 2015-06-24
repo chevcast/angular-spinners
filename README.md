@@ -164,6 +164,8 @@ app.controller('myCtrl', function ($scope) {
 });
 ```
 
+Here is a demo of using `onShow` to start a canvas animation: http://codepen.io/Chevex/pen/XbzgEL
+
 #### onHide
 
 The `onHide` option is exactly the same as `onShow` except the expression is evaluated when the spinner is hidden rather than shown.
