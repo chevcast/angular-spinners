@@ -16,7 +16,7 @@ angular.module('angularSpinners')
       },
       template: [
         '<span ng-show="show">',
-        '  <img ng-show="imgSrc" src="{{imgSrc}}" />',
+        '  <img ng-show="imgSrc" ng-src="{{imgSrc}}" />',
         '  <span ng-transclude></span>',
         '</span>'
       ].join(''),
@@ -44,7 +44,7 @@ angular.module('angularSpinners')
         };
 
         // Register this spinner with the spinner service.
-        if ($scope.register) {
+        if ($scope.register == true) {
           spinnerService._register(api);
         }
 
