@@ -127,7 +127,7 @@ angular.module('angularSpinners')
         };
 
         // Register this spinner with the spinner service.
-        if ($scope.register == true) {
+        if ($scope.register === true) {
           spinnerService._register(api);
         }
 
