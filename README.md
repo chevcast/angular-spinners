@@ -74,7 +74,7 @@ Optionally a group name may be specified so that you can show/hide groups of spi
 
 #### show
 
-By default all spinners are hidden when first registered. You can change set a spinner to be visible by default by setting the `show` option. Unlike other options, this one is two-way bound and allows you to pass in a variable from the parent scope of the directive. This lets you to automatically hide/show the spinner based on some boolean from your application. This is likely similar to the way you've done spinners in the past and is included here for convenience. I want to ensure you have multiple intuitive ways to control your spinner(s) how you see fit.
+By default all spinners are hidden when first registered. You can set a spinner to be visible by default by setting the `show` option. Unlike other options, this one is two-way bound and allows you to pass in a variable from the parent scope of the directive. This allows you to automatically hide/show the spinner based on some boolean from your application. This is likely similar to the way you've done spinners in the past and is included here for convenience. I want to ensure you have multiple intuitive ways to control your spinner(s) how you see fit.
 
 ```javascript
 app.controller('myController', function ($scope, $http) {
