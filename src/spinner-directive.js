@@ -52,16 +52,18 @@ angular.module('angularSpinners')
         // that will fire the relevant expression when show's value changes.
         if ($scope.onShow || $scope.onHide) {
           $scope.$watch('show', function (show) {
-            if (show) {
+            if (show && $scope.onShow) {
               $scope.onShow({ spinnerService: spinnerService, spinnerApi: api });
-            } else {
+            } else if (!show && $scope.onHide) {
               $scope.onHide({ spinnerService: spinnerService, spinnerApi: api });
             }
           });
         }
 
         // This spinner is good to go. Fire the onLoaded expression.
-        $scope.onLoaded({ spinnerService: spinnerService, spinnerApi: api });
+        if ($scope.onLoaded) {
+          $scope.onLoaded({ spinnerService: spinnerService, spinnerApi: api });
+        }
       }
     };
   });
