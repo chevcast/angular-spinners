@@ -181,7 +181,7 @@ The `onHide` option is exactly the same as `onShow` except the expression is eva
 
 #### Transclusion
 
-Sometimes you need more control over the kind of "spinner" you want to display, beyond just a simple animated image. You are able to supply any custom markup that you need by simply nesting it within the spinner directive. Any content will be transcluded below the loading graphic.
+Sometimes you need more control over the kind of "spinner" you want to display, beyond just a simple animated image. You are able to supply any custom markup that you need by simply nesting it within the spinner directive. Any content will be transcluded below the loading graphic. If you don't want a loading graphic and prefer to only use your own custom markup, simply don't supply the `imgSrc` option and a graphic won't be used.
 
 ```html
 <spinner name="mySpinner">
