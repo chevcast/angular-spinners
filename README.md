@@ -148,6 +148,33 @@ app.controller('myController', function ($scope) {
 
 Notice that we pass in `spinnerApi` to our custom `spinnerLoaded` function. This `spinnerApi` variable is made available by the directive similar to the way `$event` is available within an expression supplied to `ng-click`. The directive also makes `spinnerService` available to the expression if needed, allowing you to avoid cluttering your controller with yet another dependency.
 
+#### onShow
+
+In some cases you may need to fire some custom logic when the spinner is shown. Rather than worry about tracking when the spinner is hidden or shown on your own just so you can fire off some custom logic, you can call into that custom logic from the `onShow` expression. A good example would be an animated `<canvas>` loading spinner; you may want to fire off some custom javascript to draw the canvas and start the animation as soon as the spinner is shown.
+
+```html
+<spinner name="mySpinner" on-show="startAnimation()"></spinner>
+```
+
+```javascript
+app.controller('myCtrl', function ($scope) {
+  $scope.startAnimation = function () {
+    // canvas drawing/animation logic here.
+  };
+});
+```
+
+#### onHide
+
+The `onHide` option is exactly the same as `onShow` except the expression is evaluated when the spinner is hidden rather than shown.
+
+> NOTE: It might be tempting to use `onShow` or `onHide` to fire off some kind of render or data loading logic. My recommendation would be that you don't allow your spinners to be a critical part of your application. Your spinners should show/hide as a side-effect of logic happening in your app. Critical logic in your application should not be dependent upon the spinner's hide/show expressions. In other words, don't do this:
+
+> ```html
+> <spinner name="mySpinner" on-show="loadData()" on-hide="renderData()">
+> </spinner>
+> ```
+
 ---
 
 #### Transclusion
