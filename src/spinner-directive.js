@@ -25,6 +25,8 @@ angular.module('angularSpinners')
         // register should be true by default if not specified.
         if (!$scope.hasOwnProperty('register')) {
           $scope.register = true;
+        } else {
+          $scope.register = !!$scope.register;
         }
 
         // Declare a mini-API to hand off to our service so the service
@@ -44,7 +46,7 @@ angular.module('angularSpinners')
         };
 
         // Register this spinner with the spinner service.
-        if ($scope.register == true) {
+        if ($scope.register === true) {
           spinnerService._register(api);
         }
 
