@@ -4,6 +4,9 @@
   "authors": [
     "Alex Ford <alex.ford@codetunnel.com>"
   ],
+  "main": [
+    "dist/angular-spinners.min.js"
+  ],
   "license": "MIT",
   "ignore": [
     "**/.*",
