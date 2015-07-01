@@ -276,6 +276,6 @@ Now whenever an unhandled error in your Angular app is caught by the Angular exc
 
 # Frequently Asked Questions
 
-#### Q) Why do I get "No spinner named 'xyz' is registered." when I try to show my spinner?
-
-**A)** You are trying to show your spinner element before the directive has registered itself with the spinner service. See [this issue](https://github.com/codetunnel/angular-spinners/issues/4) for a full explanation.
+> #### Q) Why do I get "No spinner named 'xyz' is registered." when I try to show my spinner?
+> 
+> **A)** You are trying to show your spinner element before the directive has registered itself with the spinner service. See [this issue](https://github.com/codetunnel/angular-spinners/issues/4) for a full explanation.
