@@ -271,3 +271,11 @@ app.factory('$exceptionHandler', function($log, spinnerService) {
 ```
 
 Now whenever an unhandled error in your Angular app is caught by the Angular exception handler it will hide all of your registered spinners in addition to its usual default behavior. We all know how much users ***HATE*** frozen spinners, right?
+
+---
+
+# Frequently Asked Questions
+
+#### Q) Why do I get "No spinner named 'xyz' is registered." when I try to show my spinner?
+
+**A)** You are trying to show your spinner element before the directive has registered itself with the spinner service. See [this issue](https://github.com/codetunnel/angular-spinners/issues/4) for a full explanation.
