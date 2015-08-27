@@ -67,7 +67,7 @@ myApp.controller('booksController', function ($scope, $http, spinnerService) {
 });
 ```
 
-Here is a working demo: http://codepen.io/Chevex/pen/pvoLgB/
+Here is a working demo: [http://codepen.io/Chevex/pen/pvoLgB/](https://www.npmjs.com/package/angular-spinners)
 
 ---
 
@@ -183,7 +183,7 @@ app.controller('myCtrl', function ($scope) {
 });
 ```
 
-Here is a demo of using `onShow` to start a canvas animation: http://codepen.io/Chevex/pen/XbzgEL
+Here is a demo of using `onShow` to start a canvas animation: [http://codepen.io/Chevex/pen/XbzgEL](https://www.npmjs.com/package/angular-spinners)
 
 #### onHide
 
