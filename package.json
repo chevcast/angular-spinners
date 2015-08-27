@@ -2,24 +2,19 @@
   "name": "angular-spinners",
   "version": "1.0.0",
   "description": "",
-  "main": "angular-spinners.js",
-  "dependencies": {
-    "gulp": "^3.9.0",
-    "gulp-angular-filesort": "^1.1.1",
-    "gulp-concat": "^2.5.2",
-    "gulp-ng-annotate": "^1.0.0",
-    "gulp-uglify": "^1.2.0"
-  },
+  "main": "dist/angular-spinners.js",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-angular-filesort": "^1.1.1",
     "gulp-concat": "^2.5.2",
+    "gulp-concat-util": "^0.5.2",
     "gulp-ng-annotate": "^1.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.2.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "gulp build"
   },
   "repository": {
     "type": "git",

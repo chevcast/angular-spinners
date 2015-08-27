@@ -1,3 +1,9 @@
+/* commonjs package manager support (eg componentjs) */
+if (typeof module !== "undefined" && typeof exports !== "undefined" && module.exports === exports){
+  module.exports = 'angularSpinners';
+}
+
+(function (window, angular, undefined) {
 angular.module('angularSpinners', [])
   .factory('spinnerService', function () {
     var spinners = {};
@@ -108,6 +114,8 @@ angular.module('angularSpinners')
         // register should be true by default if not specified.
         if (!$scope.hasOwnProperty('register')) {
           $scope.register = true;
+        } else {
+          $scope.register = !!$scope.register;
         }
 
         // Declare a mini-API to hand off to our service so the service
@@ -150,3 +158,4 @@ angular.module('angularSpinners')
       }]
     };
   });
+})(window, window.angular);
