@@ -5,9 +5,28 @@ A library for easily adding spinners and a spinner hide/show API to your Angular
 
 You can either download the library manually [here](https://raw.githubusercontent.com/codetunnel/angular-spinners/master/dist/angular-spinners.min.js), or you can install with Bower.
 
+#### Bower:
+
 > $ bower install angular-spinners
 
+#### npm:
+
+> $ npm install angular-spinners
+
 ### Quick Start
+
+
+#### Browser:
+
+```html
+<script src="/bower_components/angular-spinners/dist/angular-spinners.min.js"></script>
+```
+
+#### Node.js
+
+```javascript
+require('angular-spinners');
+```
 
 Using spinners is extremely simple with this library. First make sure that your app lists `angularSpinners` as a dependency.
 
