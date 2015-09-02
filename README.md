@@ -67,7 +67,7 @@ myApp.controller('booksController', function ($scope, $http, spinnerService) {
 });
 ```
 
-Here is a working demo: [http://codepen.io/Chevex/pen/pvoLgB/](https://www.npmjs.com/package/angular-spinners)
+Here is a [working demo](http://codepen.io/Chevex/pen/pvoLgB/).
 
 ---
 
