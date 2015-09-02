@@ -66,6 +66,11 @@ angular.module('angularSpinners')
         if ($scope.onLoaded) {
           $scope.onLoaded({ spinnerService: spinnerService, spinnerApi: api });
         }
+
+        // Unregister this spinner if the $destroy event is emitted on scope.
+        $scope.$on('$destroy', function () {
+          spinnerService._unregister($scope.name);
+        });
       }
     };
   });
