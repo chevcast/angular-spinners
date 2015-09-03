@@ -104,10 +104,10 @@ angular.module('angularSpinners')
         onHide: '&?'
       },
       template: [
-        '<span ng-show="show">',
+        '<div ng-show="show">',
         '  <img ng-show="imgSrc" ng-src="{{imgSrc}}" />',
-        '  <span ng-transclude></span>',
-        '</span>'
+        '  <div ng-transclude></div>',
+        '</div>'
       ].join(''),
       controller: ["$scope", "spinnerService", function ($scope, spinnerService) {
 
