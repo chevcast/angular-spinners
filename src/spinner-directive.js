@@ -26,7 +26,7 @@ angular.module('angularSpinners')
         if (!$scope.hasOwnProperty('register')) {
           $scope.register = true;
         } else {
-          $scope.register = !!$scope.register;
+          $scope.register = $scope.register.toLowerCase() === 'false' ? false : true;
         }
 
         // Declare a mini-API to hand off to our service so the service
