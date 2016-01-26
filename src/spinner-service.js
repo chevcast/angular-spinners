@@ -6,9 +6,6 @@ angular.module('angularSpinners', [])
         if (!data.hasOwnProperty('name')) {
           throw new Error("Spinner must specify a name when registering with the spinner service.");
         }
-        if (spinners.hasOwnProperty(data.name)) {
-          throw new Error("A spinner with the name '" + data.name + "' has already been registered.");
-        }
         spinners[data.name] = data;
       },
       _unregister: function (name) {
