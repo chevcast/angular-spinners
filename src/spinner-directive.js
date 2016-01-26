@@ -16,8 +16,8 @@ angular.module('angularSpinners')
       },
       template: [
         '<div ng-show="show">',
-        '  <img ng-show="imgSrc" ng-src="{{imgSrc}}" />',
-        '  <div ng-transclude></div>',
+        '  <img ng-if="imgSrc" ng-src="{{imgSrc}}" />',
+        '  <ng-transclude></ng-transclude>',
         '</div>'
       ].join(''),
       controller: function ($scope, spinnerService) {
