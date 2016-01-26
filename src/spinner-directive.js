@@ -20,7 +20,7 @@ angular.module('angularSpinners')
         '  <ng-transclude></ng-transclude>',
         '</div>'
       ].join(''),
-      controller: function ($scope, spinnerService) {
+      controller: ['$scope', 'spinnerService', function ($scope, spinnerService) {
 
         // register should be true by default if not specified.
         if (!$scope.hasOwnProperty('register')) {
@@ -66,6 +66,6 @@ angular.module('angularSpinners')
         if ($scope.onLoaded) {
           $scope.onLoaded({ spinnerService: spinnerService, spinnerApi: api });
         }
-      }
+      }]
     };
   });

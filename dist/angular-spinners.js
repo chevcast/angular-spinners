@@ -106,7 +106,7 @@ angular.module('angularSpinners')
         '  <ng-transclude></ng-transclude>',
         '</div>'
       ].join(''),
-      controller: ["$scope", "spinnerService", function ($scope, spinnerService) {
+      controller: ['$scope', 'spinnerService', function ($scope, spinnerService) {
 
         // register should be true by default if not specified.
         if (!$scope.hasOwnProperty('register')) {
