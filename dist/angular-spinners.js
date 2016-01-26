@@ -12,9 +12,6 @@ angular.module('angularSpinners', [])
         if (!data.hasOwnProperty('name')) {
           throw new Error("Spinner must specify a name when registering with the spinner service.");
         }
-        if (spinners.hasOwnProperty(data.name)) {
-          throw new Error("A spinner with the name '" + data.name + "' has already been registered.");
-        }
         spinners[data.name] = data;
       },
       _unregister: function (name) {
@@ -105,8 +102,8 @@ angular.module('angularSpinners')
       },
       template: [
         '<div ng-show="show">',
-        '  <img ng-show="imgSrc" ng-src="{{imgSrc}}" />',
-        '  <div ng-transclude></div>',
+        '  <img ng-if="imgSrc" ng-src="{{imgSrc}}" />',
+        '  <ng-transclude></ng-transclude>',
         '</div>'
       ].join(''),
       controller: ["$scope", "spinnerService", function ($scope, spinnerService) {
@@ -155,11 +152,6 @@ angular.module('angularSpinners')
         if ($scope.onLoaded) {
           $scope.onLoaded({ spinnerService: spinnerService, spinnerApi: api });
         }
-
-        // Unregister this spinner if the $destroy event is emitted on scope.
-        $scope.$on('$destroy', function () {
-          spinnerService._unregister($scope.name);
-        });
       }]
     };
   });
