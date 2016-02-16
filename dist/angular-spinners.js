@@ -96,7 +96,6 @@ angular.module('angularSpinners')
         show: '=?',
         imgSrc: '@?',
         svg: '@?',
-        fallback: '@?',
         register: '@?',
         onLoaded: '&?',
         onShow: '&?',
@@ -105,9 +104,7 @@ angular.module('angularSpinners')
       template: [
         '<div ng-show="show">',
         '  <img ng-if="imgSrc" ng-src="{{imgSrc}}" />',
-        '  <object ng-if="svg" type="image/svg+xml" data="{{svg}}">',
-        '    <img ng-if="fallback" src="{{fallback}}" />',
-        '  </object>',
+        '  <object ng-if="svg" type="image/svg+xml" data="{{svg}}"></object>',
         '  <ng-transclude></ng-transclude>',
         '</div>'
       ].join(''),
