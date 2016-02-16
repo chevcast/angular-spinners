@@ -140,8 +140,6 @@ You can use an animated SVG image as a spinner. To do that, simply remove the `i
 <spinner name="mySpinner" svg="/path/to/loading.svg"></spinner>
 ```
 
-If you want to disable the loading image entirely then simply do not specify the `img-src` attribute and an image won't be used. If you don't include the `imgSrc` option then be sure to specify some custom markup within the spinner directive itself so it can be used instead.
-
 #### register
 
 By default all spinners register themselves with the spinner service. If for some reason you don't want this to happen, simply set `register` to `false`.
