@@ -147,7 +147,7 @@ If you do this then you'll want to manually get reference to that spinner's API 
 
 #### onLoaded
 
-Sometimes you need to know when a spinner is loaded and registered with the spinner service. To be notified of this simpy supply an an Angular expression to the `onLoaded` option.
+Sometimes you need to know when a spinner is loaded and registered with the spinner service. To be notified of this simply supply an Angular expression to the `onLoaded` option.
 
 ```html
 <spinner name="mySpinner" on-loaded="spinnerLoaded(spinnerApi);"></spinner>
@@ -324,3 +324,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
