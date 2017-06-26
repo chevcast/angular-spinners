@@ -64,6 +64,15 @@ var SpinnerService = (function () {
     SpinnerService.prototype.hideAll = function () {
         this.spinnerCache.forEach(function (spinner) { return spinner.show = false; });
     };
+    SpinnerService.prototype.isShowing = function (spinnerName) {
+        var showing = undefined;
+        this.spinnerCache.forEach(function (spinner) {
+            if (spinner.name === spinnerName) {
+                showing = spinner.show;
+            }
+        });
+        return showing;
+    };
     return SpinnerService;
 }());
 SpinnerService.decorators = [

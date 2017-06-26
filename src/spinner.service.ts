@@ -11,19 +11,19 @@ export class SpinnerService {
   }
 
   _unregister(spinnerName: string): void {
-    for (let spinner of this.spinnerCache) {
+    this.spinnerCache.forEach(spinner => {
       if (spinner.name === spinnerName) {
-        return this.spinnerCache.delete(spinner);
+        this.spinnerCache.delete(spinner);
       }
     });
   }
 
   _unregisterGroup(spinnerGroup: string): void {
-    for (let spinner of this.spinnerCache) {
+    this.spinnerCache.forEach(spinner => {
       if (spinner.group === spinnerGroup) {
         this.spinnerCache.delete(spinner);
       }
-    };
+    });
   }
 
   _unregisterAll(): void {
@@ -31,54 +31,52 @@ export class SpinnerService {
   }
 
   show(spinnerName: string): void {
-    for (let spinner of this.spinnerCache) {
+    this.spinnerCache.forEach(spinner => {
       if (spinner.name === spinnerName) {
-        return spinner.show = true;
+        spinner.show = true;
       }
-    };
+    });
   }
 
   hide(spinnerName: string): void {
-    for (let spinner in this.spinnerCache) {
+    this.spinnerCache.forEach(spinner => {
       if (spinner.name === spinnerName) {
-        return spinner.show = false;
+        spinner.show = false;
       }
-    };
+    });
   }
 
   showGroup(spinnerGroup: string): void {
-    for (let spinner of this.spinnerCache) {
+    this.spinnerCache.forEach(spinner => {
       if (spinner.group === spinnerGroup) {
         spinner.show = true;
       }
-    };
+    });
   }
 
   hideGroup(spinnerGroup: string): void {
-    for (let spinner of this.spinnerCache) {
+    this.spinnerCache.forEach(spinner => {
       if (spinner.group === spinnerGroup) {
         spinner.show = false;
       }
-    };
+    });
   }
 
   showAll(): void {
-    for (let spinner of this.spinnerCache) {
-      spinner.show = true;
-    }
+    this.spinnerCache.forEach(spinner => spinner.show = true);
   }
 
   hideAll(): void {
-    for (let spinner of this.spinnerCache) {
-      spinner.show = true;
-    }
+    this.spinnerCache.forEach(spinner => spinner.show = false);
   }
 
-  isShowing(spinnerName: string): boolean {
-    for (let spinner of this.spinnerCache) {
+  isShowing(spinnerName: string): boolean | undefined {
+    let showing = undefined;
+    this.spinnerCache.forEach(spinner => {
       if (spinner.name === spinnerName) {
-        return spinner;
+        showing = spinner.show;
       }
-    };
+    });
+    return showing;
   }
 }

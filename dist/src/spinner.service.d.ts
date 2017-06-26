@@ -11,4 +11,5 @@ export declare class SpinnerService {
     hideGroup(spinnerGroup: string): void;
     showAll(): void;
     hideAll(): void;
+    isShowing(spinnerName: string): boolean | undefined;
 }
