@@ -12,7 +12,7 @@ If you're running npm v8 or higher then `--save` is implied if you don't include
 
 ### Quick Start
 
-```javascript
+```typescript
 import { SpinnerModule } from 'angular-spinners';
 
 @NgModule({
@@ -29,12 +29,12 @@ export class AppModule { }
 Next simply drop a spinner directive in your app. The only required attribute is `name`.
 
 ```html
-<spinner name="demo-spinner"></spinner>
+<spinner name="mySpinner"></spinner>
 ```
 
-Now just inject the spinner service wherever you need it.
+Now just inject the `SpinnerService` wherever you need it.
 
-```javascript
+```typescript
 import { SpinnerService } from 'angular-spinners';
 
 @Injectable()
@@ -43,9 +43,9 @@ export class YourService {
   public constructor(protected spinnerService: SpinnerService) {}
 
   beginSomeOperation(): void {
-    this.spinnerService.show('demo-spinner');
+    this.spinnerService.show('mySpinner');
     this.doSomething().then(() => {
-      this.spinnerService.hide('demo-spinner');
+      this.spinnerService.hide('mySpinner');
     });
   }
 }
@@ -75,7 +75,7 @@ Optionally a group name may be specified so that you can show/hide groups of spi
 <spinner name="mySpinner3" group="bar"></spinner>
 ```
 
-```javascript
+```typescript
 @Injectable()
 export class YourService implements OnInit {
 
@@ -107,7 +107,7 @@ Note: Don't forget to bind to the `show` parameter if you plan to pass the liter
 You can even two-way bind to the `show` property giving you full control over how you show/hide your spinner and what side effects that has in your app.
 
 Example:
-```javascript
+```typescript
 @Component({
   selector: 'my-component',
   template: `
@@ -152,7 +152,7 @@ Content projection is the most common way to use the `SpinnerComponent` as it al
 
 The most common way of interacting with your spinners is via the `spinnerService`. This service can be injected just like any other Angular service. Once you have reference to the service you can take advantage of several methods.
 
-```javascript
+```typescript
 import { SpinnerService } from 'angular-spinners';
 
 @Injectable()
@@ -188,7 +188,7 @@ The `show` method allows you to display a specific spinner by name.
 <spinner name="mySpinner" loadingImage="/path/to/loader.gif"></spinner>
 ```
 
-```javascript
+```typescript
 spinnerService.show('mySpinner');
 ```
 
@@ -206,7 +206,7 @@ The `showGroup` method allows you to display all spinners with the same group na
 <spinner name="spinner3" group="bar"></spinner>
 ```
 
-```javascript
+```typescript
 spinnerService.showGroup('foo');
 ```
 
