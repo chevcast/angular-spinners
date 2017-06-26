@@ -1,0 +1,31 @@
+{
+  "name": "angular-spinners",
+  "version": "5.0.0",
+  "description": "Easy loading spinner management for apps running Angular 2+",
+  "main": "bundles/angular-spinners.umd.js",
+  "module": "index.js",
+  "typings": "index.d.ts",
+  "keywords": [
+    "angular",
+    "angular2",
+    "angular 2",
+    "angular4",
+    "spinners",
+    "spinner"
+  ],
+  "author": "Alex Ford",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chevtek/angular-spinners.git"
+  },
+  "homepage": "https://github.com/chevtek/angular-spinners",
+  "bugs": {
+    "url": "https://github.com/chevtek/angular-spinners/issues"
+  },
+  "peerDependencies": {
+    "@angular/core": "^2.4.0 || ^4.0.0",
+    "@angular/common": "^2.4.0 || ^4.0.0",
+    "rxjs": "^5.4.1"
+  }
+}
