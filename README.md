@@ -131,13 +131,15 @@ If you want to disable the loading image entirely then simply do not specify the
 
 #### Content Projection
 
-Sometimes you need more control over the kind of spinner you want to display, beyond just a simple animated image. You are able to supply any custom markup that you need by simply nesting it within the spinner directive. Any content will be projeced into the spinner template below the loading graphic. If you don't want a loading graphic and prefer to only use your own custom markup, simply don't supply the `loadingImage` option and a graphic won't be used.
+If you need more control over the kind of spinner you want to display, beyond just a simple animated image. You are able to supply any custom markup that you need by simply nesting it within the spinner directive. Any content will be projeced into the spinner template below the `loadingImage` if one was specified.
 
 ```html
 <spinner name="mySpinner">
   <h3>Loading...</h3>
 </spinner>
 ```
+
+Content projection is the most common way to use the `SpinnerComponent` as it allows you to pass in custom markup and use CSS animations instead of an animated .gif image.
 
 ---
 
