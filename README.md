@@ -1,9 +1,14 @@
 # angular-spinners
-A library for easily managing loading spinners in complex applications.
+A library for easily managing loading spinners in complex Angular2+ applications.
+
+> ## NOTICE
+> angular-spinners v5 or higher is now for Angular 2 or higher. If you are looking to install the old version for Angular 1.x you may run `npm install angular-spinners@3.1.2`. That version is considered deprecated and is no longer supported unless I find a major issue, but feel free to continue using it as it has proven to be quite reliable in Angular 1.x. You will never see changes to the old version of angular-spinners except in the case of potential patch versions (3.1.x) if anything major gets reported for the old version.
 
 ### Install
 
-> $ npm i angular-spinners
+> $ npm i angular-spinners --save
+
+If you're running npm v8 or higher then `--save` is implied if you don't include it.
 
 ### Quick Start
 
