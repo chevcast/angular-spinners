@@ -1,83 +1,60 @@
 # angular-spinners
-A library for easily adding spinners and a spinner hide/show API to your Angular application.
+A library for easily managing loading spinners in complex applications.
 
 ### Install
 
-You can either download the library manually [here](https://raw.githubusercontent.com/codetunnel/angular-spinners/master/dist/angular-spinners.min.js), install with Bower, or with npm.
-
-#### Bower:
-
-> $ bower install angular-spinners
-
-#### npm:
-
-> $ npm install angular-spinners
+> $ npm i angular-spinners
 
 ### Quick Start
 
+```javascript
+import { SpinnerModule } from 'angular-spinners';
 
-#### Browser:
+@NgModule({
+  imports: [
+    BrowserModule,
+    SpinnerModule,
+    ...
+  ]
+  ...
+})
+export class AppModule { }
+```
+
+Next simply drop a spinner directive in your app. The only required attribute is `name`.
 
 ```html
-<script src="/bower_components/angular-spinners/dist/angular-spinners.min.js"></script>
+<spinner name="demo-spinner"></spinner>
 ```
 
-#### Node.js
+Now just inject the spinner service wherever you need it.
 
 ```javascript
-require('angular-spinners');
+import { SpinnerService } from 'angular-spinners';
+
+@Injectable()
+export class YourService {
+
+  public constructor(protected spinnerService: SpinnerService) {}
+
+  beginSomeOperation() {
+    this.spinnerService.show('demo-spinner');
+    this.doSomething().then(() => {
+      this.spinnerService.hide('demo-spinner');
+    });
+  }
+}
 ```
-
-Using spinners is extremely simple with this library. First make sure that your app lists `angularSpinners` as a dependency.
-
-```javascript
-var myApp = angular.module('myApp', ['angularSpinners']);
-```
-
-Once your dependency is specified then you can begin creating spinners. To do so, use the spinner directive.
-
-```html
-<div ng-controller="booksController">
-  <spinner name="booksSpinner" img-src="spinner.gif"></spinner>
-  <h3 ng-show="!books">No books.</h3>
-  <ul ng-show="books">
-    <li ng-repeat="book in books">{{book.title}}</li>
-  </ul>
-  <button ng-show="!books" ng-click="loadBooks();">Load Books</button>
-</div>
-```
-
-Then in your app you can inject the spinner service wherever you need it.
-
-```javascript
-myApp.controller('booksController', function ($scope, $http, spinnerService) {
-  $scope.loadBooks = function () {
-    spinnerService.show('booksSpinner');
-    $http.get('/api/books')
-      .success(function (books) {
-        $scope.books = books;
-      })
-      .catch(function (err) {
-        console.error(err);
-      })
-      .finally(function () {
-        spinnerService.hide('booksSpinner');
-      });
-  };
-});
-```
-
-Here is a [working demo](http://codepen.io/Chevex/pen/pvoLgB/).
 
 ---
 
-### Spinner Directive
+### Spinner Component
 
-Several options are available and you specify them as attributes on your directives. The directive can be used as a standalone element or as an attribute.
+The spinner component gives you several options.
 
 #### name
 
-The name attribute is required if the `register` option is `true`. It is what you must pass to the service when trying to show/hide that specific spinner.
+The name attribute is required. It is what you must pass to the service when trying to show/hide that specific spinner.
 
 ```html
 <spinner name="mySpinner"></spinner>
@@ -89,118 +66,72 @@ Optionally a group name may be specified so that you can show/hide groups of spi
 
 ```html
 <spinner name="mySpinner" group="foo"></spinner>
+<spinner name="mySpinner2" group="foo"></spinner>
+<spinner name="mySpinner3" group="bar"></spinner>
+```
+
+```javascript
+@Injectable()
+export class YourService implements OnInit {
+
+  constructor(private spinnerService: SpinnerService) { }
+
+  ngOnInit() {
+    this.spinnerService.showGroup('foo');
+  }
+
+}
+```
+
+Both `name` and `group` are input parameters you can bind to if needed.
+
+```html
+<spinner [name]="dynamicSpinnerName" [group]="dynamicGroupName"></spinner>
 ```
 
 #### show
 
-By default all spinners are hidden when first registered. You can set a spinner to be visible by default by setting the `show` option. Unlike other options, this one is two-way bound and allows you to pass in a variable from the parent scope of the directive. This allows you to automatically hide/show the spinner based on some boolean from your application. This is likely similar to the way you've done spinners in the past and is included here for convenience. I want to ensure you have multiple intuitive ways to control your spinner(s) how you see fit.
+By default all spinners are hidden when first registered. You can set a spinner to be visible by default by setting the `show` property to `true`.
 
+```html
+<spinner name="mySpinner" [show]="true"></spinner>
+```
+
+Note: Don't forget to bind to the `show` parameter if you plan to pass the literal value `true`. If you try doing `show="true"` instead of `[show]="true"` you'll be passing the string value `"true"` rather than the boolean value of `true`.
+
+You can even two-way bind to the `show` property giving you full control over how you show/hide your spinner and what side effects that has in your app.
+
+Example:
 ```javascript
-app.controller('myController', function ($scope, $http) {
-  $scope.loading = true;
-  $http.get('/path/to/data')
-    .success(function (data) {
-      // do stuff with data
-    })
-    .catch(function (err) {
-      // handle error
-    })
-    .finally(function () {
-      $scope.loading = false;
-    });
-});
+@Component({
+  selector: 'my-component',
+  template: `
+    <spinner name="mySpinner" [(show)]="spinnerShowing"></spinner>
+    <button (click)="spinnerShowing = !spinnerShowing">
+      {{spinnerShowing ? 'Hide' : 'Show'}} Spinner
+    </button>
+  `
+})
+export class MyComponent {
+  spinnerShowing: boolean = false;
+}
 ```
+
+Two-way binding allows changes to `show` to be propagated back to your app allowing you to still use the `SpinnerService` API in conjunction with your own logic and everything will stay in sync.
+
+#### loadingImage
+
+Passing in a loading image is the simplest way to create a quick spinner.
 
 ```html
-<div ng-controller="myController">
-  <spinner name="mySpinner" show="loading"></spinner>
-</div>
+<spinner name="mySpinner" loadingImage="/path/to/loading.gif"></spinner>
 ```
 
-You can also just pass a simple boolean value to the option. For example, you could show the spinner by default and ignore the effects of two-way binding by simply passing `true` to the `show` option.
+If you want to disable the loading image entirely then simply do not specify the `loadingImage` property and an image won't be used. If you don't include the `loadingImage` option then be sure to specify some custom markup within the spinner directive itself so it can be used instead.
 
-```html
-<spinner name="mySpinner" show="true"></spinner>
-```
+#### Content Projection
 
-#### imgSrc
-
-There won't be anything to show if the spinner doesn't have a link to a loading graphic or some embedded markup to be displayed. You can specify an image using the `imgSrc` option.
-
-```html
-<spinner name="mySpinner" img-src="/path/to/loading.gif"></spinner>
-```
-
-If you want to disable the loading image entirely then simply do not specify the `img-src` attribute and an image won't be used. If you don't include the `imgSrc` option then be sure to specify some custom markup within the spinner directive itself so it can be used instead.
-
-#### register
-
-By default all spinners register themselves with the spinner service. If for some reason you don't want this to happen, simply set `register` to `false`.
-
-```html
-<spinner img-src="/path/to/loader.gif" register="false"></spinner>
-```
-
-> NOTE: Keep in mind that if you disable spinner registration then this spinner will not be tracked by the spinner service at all. It won't even hide if you call `spinnerService.hideAll()`.
-
-If you do this then you'll want to manually get reference to that spinner's API so you can talk to it directly in order to hide/show it. You can do that with the `onLoaded` option below.
-
-#### onLoaded
-
-Sometimes you need to know when a spinner is loaded and registered with the spinner service. To be notified of this simpy supply an an Angular expression to the `onLoaded` option.
-
-```html
-<spinner name="mySpinner" on-loaded="spinnerLoaded(spinnerApi);"></spinner>
-```
-
-```javascript
-app.controller('myController', function ($scope) {
-  $scope.spinnerLoaded = function (mySpinner) {
-    // Now you can do:
-    //   mySpinner.show();
-    //   mySpinner.hide();
-  };
-});
-```
-
-> Note: The expression passed to `onRegister` will still be invoked even if `register` is set to `false`.
-
-Notice that we pass in `spinnerApi` to our custom `spinnerLoaded` function. This `spinnerApi` variable is made available by the directive similar to the way `$event` is available within an expression supplied to `ng-click`. The directive also makes `spinnerService` available to the expression if needed, allowing you to avoid cluttering your controller with yet another dependency.
-
-#### onShow
-
-In some cases you may need to fire some custom logic when the spinner is shown. Rather than worry about tracking when the spinner is hidden or shown on your own just so you can fire off some custom logic, you can call into that custom logic from the `onShow` expression. A good example would be an animated `<canvas>` loading spinner; you may want to fire off some custom javascript to draw the canvas and start the animation as soon as the spinner is shown.
-
-```html
-<spinner name="mySpinner" on-show="startAnimation()"></spinner>
-```
-
-```javascript
-app.controller('myCtrl', function ($scope) {
-  $scope.startAnimation = function () {
-    // canvas drawing/animation logic here.
-  };
-});
-```
-
-Here is a demo of using `onShow` to start a canvas animation: [http://codepen.io/Chevex/pen/XbzgEL](https://www.npmjs.com/package/angular-spinners)
-
-#### onHide
-
-The `onHide` option is exactly the same as `onShow` except the expression is evaluated when the spinner is hidden rather than shown.
-
-> NOTE: It might be tempting to use `onShow` or `onHide` to fire off some kind of render or data loading logic. My recommendation would be that you don't allow your spinners to be a critical part of your application. Your spinners should show/hide as a side-effect of logic happening in your app. Critical logic in your application should not be dependent upon the spinner's hide/show expressions. In other words, don't do this:
-
-> ```html
-> <spinner name="mySpinner" on-show="loadData()" on-hide="renderData()">
-> </spinner>
-> ```
-
----
-
-#### Transclusion
-
-Sometimes you need more control over the kind of "spinner" you want to display, beyond just a simple animated image. You are able to supply any custom markup that you need by simply nesting it within the spinner directive. Any content will be transcluded below the loading graphic. If you don't want a loading graphic and prefer to only use your own custom markup, simply don't supply the `imgSrc` option and a graphic won't be used.
+Sometimes you need more control over the kind of spinner you want to display, beyond just a simple animated image. You are able to supply any custom markup that you need by simply nesting it within the spinner directive. Any content will be projeced into the spinner template below the loading graphic. If you don't want a loading graphic and prefer to only use your own custom markup, simply don't supply the `loadingImage` option and a graphic won't be used.
 
 ```html
 <spinner name="mySpinner">
@@ -215,43 +146,50 @@ Sometimes you need more control over the kind of "spinner" you want to display, 
 The most common way of interacting with your spinners is via the `spinnerService`. This service can be injected just like any other Angular service. Once you have reference to the service you can take advantage of several methods.
 
 ```javascript
-app.controller('myController', function ($scope, $http, spinnerService) {
-  $scope.loadData = function () {
-    spinnerService.show('mySpinner');
-    $http.get('/api/data')
-      .success(function (data) {
-        // do stuff with data
-        $scope.data = data;
+import { SpinnerService } from 'angular-spinners';
+
+@Injectable()
+export class YourService {
+
+  constructor(
+    private spinnerService: SpinnerService,
+    private http: Http
+  ) {}
+
+  loadData(): void {
+    this.spinnerService.show('mySpinner');
+    this.http
+      .get('/some/url/for/data/')
+      .toPromise()
+      then(res => {
+        this.spinnerService.hide('mySpinner');
+        // do stuff with res
       })
-      .catch(function (err) {
-        // handle err
-        console.error(err);
+      .catch(err => {
+        this.spinnerService.hide('mySpinner');
+        // log error
       })
-      .finally(function () {
-        // no matter what happens, hide the spinner when done
-        spinnerService.hide('mySpinner');
-      });
-  };
-});
+  }
+}
 ```
 
-#### show(spinnerName)
+#### show(spinnerName: string): void
 
 The `show` method allows you to display a specific spinner by name.
 
 ```html
-<spinner name="mySpinner" img-src="/path/to/loader.gif"></spinner>
+<spinner name="mySpinner" loadingImage="/path/to/loader.gif"></spinner>
 ```
 
 ```javascript
 spinnerService.show('mySpinner');
 ```
 
-#### hide(spinnerName)
+#### hide(spinnerName: string): void
 
 Works exactly like `show` but hides the spinner element.
 
-#### showGroup(groupName)
+#### showGroup(groupName: string): void
 
 The `showGroup` method allows you to display all spinners with the same group name.
 
@@ -267,34 +205,18 @@ spinnerService.showGroup('foo');
 
 Spinners 1 and 2 would show but spinner 3 would not since it is not part of group "foo".
 
-#### hideGroup(groupName)
+#### hideGroup(groupName: string): void
 
 Works exactly the same as `showGroup` except it hides the spinners instead.
 
-#### showAll
+#### showAll: void
 
 Hopefully it's obvious that this method will show every single spinner registered with the service. This method is rarely used but is there for parity just in case.
 
-#### hideAll
+#### hideAll(): void
 
-The `hideAll` method is identical to `showAll` except it hides every spinner that is registered. This method also isn't used very often but is extremely useful in global error handlers. For example, you could override the [default Angular exception handler](https://github.com/angular/angular.js/blob/720012eab6fef5e075a1d6876dd2e508c8e95b73/src/ng/exceptionHandler.js#L43-L49) like so:
+The `hideAll` method is identical to `showAll` except it hides every spinner that is registered. This method also isn't used very often but is extremely useful in global error handlers. We all know how much users ***HATE*** frozen spinners, right?
 
-```javascript
-// Override Angular $exceptionHandler service.
-app.factory('$exceptionHandler', function($log, spinnerService) {
-  return function(err, cause) {
-    spinnerService.hideAll();
-    $log.error.apply($log, arguments);
-  };
-});
-```
+#### isShowing(spinnerName: string): boolean
 
-Now whenever an unhandled error in your Angular app is caught by the Angular exception handler it will hide all of your registered spinners in addition to its usual default behavior. We all know how much users ***HATE*** frozen spinners, right?
-
----
-
-# Frequently Asked Questions
-
-> #### Q) Why do I get "No spinner named 'xyz' is registered." when I try to show my spinner?
->
-> **A)** You are trying to show your spinner element before the directive has registered itself with the spinner service. See [this issue](https://github.com/codetunnel/angular-spinners/issues/4) for a full explanation.
+The `isShowing` method returns a boolean indicating whether or not the specified spinner is currently showing. You can already two-way bind to the `show` property on the component but rarely you may want to get this information in a distant part of your app without having to manually wire your app to expose it.
