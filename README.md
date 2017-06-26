@@ -37,7 +37,7 @@ export class YourService {
 
   public constructor(protected spinnerService: SpinnerService) {}
 
-  beginSomeOperation() {
+  beginSomeOperation(): void {
     this.spinnerService.show('demo-spinner');
     this.doSomething().then(() => {
       this.spinnerService.hide('demo-spinner');
@@ -52,7 +52,7 @@ export class YourService {
 
 The spinner component gives you several options.
 
-#### name
+#### name: string
 
 The name attribute is required. It is what you must pass to the service when trying to show/hide that specific spinner.
 
@@ -60,7 +60,7 @@ The name attribute is required. It is what you must pass to the service when try
 <spinner name="mySpinner"></spinner>
 ```
 
-#### group
+#### group: string
 
 Optionally a group name may be specified so that you can show/hide groups of spinners.
 
@@ -76,7 +76,7 @@ export class YourService implements OnInit {
 
   constructor(private spinnerService: SpinnerService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.spinnerService.showGroup('foo');
   }
 
@@ -89,7 +89,7 @@ Both `name` and `group` are input parameters you can bind to if needed.
 <spinner [name]="dynamicSpinnerName" [group]="dynamicGroupName"></spinner>
 ```
 
-#### show
+#### show: boolean
 
 By default all spinners are hidden when first registered. You can set a spinner to be visible by default by setting the `show` property to `true`.
 
@@ -119,7 +119,7 @@ export class MyComponent {
 
 Two-way binding allows changes to `show` to be propagated back to your app allowing you to still use the `SpinnerService` API in conjunction with your own logic and everything will stay in sync.
 
-#### loadingImage
+#### loadingImage: string
 
 Passing in a loading image is the simplest way to create a quick spinner.
 
