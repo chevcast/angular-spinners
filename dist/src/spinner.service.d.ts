@@ -2,7 +2,7 @@ import { SpinnerComponent } from './spinner.component';
 export declare class SpinnerService {
     private spinnerCache;
     _register(spinner: SpinnerComponent): void;
-    _unregister(spinnerName: string): void;
+    _unregister(spinnerToRemove: SpinnerComponent): void;
     _unregisterGroup(spinnerGroup: string): void;
     _unregisterAll(): void;
     show(spinnerName: string): void;

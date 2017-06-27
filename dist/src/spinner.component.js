@@ -22,6 +22,9 @@ var SpinnerComponent = (function () {
             throw new Error("Spinner must have a 'name' attribute.");
         this.spinnerService._register(this);
     };
+    SpinnerComponent.prototype.ngOnDestroy = function () {
+        this.spinnerService._unregister(this);
+    };
     return SpinnerComponent;
 }());
 export { SpinnerComponent };

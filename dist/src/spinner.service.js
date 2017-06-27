@@ -6,10 +6,10 @@ var SpinnerService = (function () {
     SpinnerService.prototype._register = function (spinner) {
         this.spinnerCache.add(spinner);
     };
-    SpinnerService.prototype._unregister = function (spinnerName) {
+    SpinnerService.prototype._unregister = function (spinnerToRemove) {
         var _this = this;
         this.spinnerCache.forEach(function (spinner) {
-            if (spinner.name === spinnerName) {
+            if (spinner === spinnerToRemove) {
                 _this.spinnerCache.delete(spinner);
             }
         });

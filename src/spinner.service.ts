@@ -10,9 +10,9 @@ export class SpinnerService {
     this.spinnerCache.add(spinner);
   }
 
-  _unregister(spinnerName: string): void {
+  _unregister(spinnerToRemove: SpinnerComponent): void {
     this.spinnerCache.forEach(spinner => {
-      if (spinner.name === spinnerName) {
+      if (spinner === spinnerToRemove) {
         this.spinnerCache.delete(spinner);
       }
     });

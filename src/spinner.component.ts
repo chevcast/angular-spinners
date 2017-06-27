@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnInit, OnDestroy, EventEmitter } from '@angular/core';
 import { SpinnerService } from './spinner.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { SpinnerService } from './spinner.service';
     </div>
   `
 })
-export class SpinnerComponent implements OnInit {
+export class SpinnerComponent implements OnInit, OnDestroy {
   constructor(private spinnerService: SpinnerService) {}
 
   @Input() name: string;
@@ -35,5 +35,9 @@ export class SpinnerComponent implements OnInit {
     if (!this.name) throw new Error("Spinner must have a 'name' attribute.");
 
     this.spinnerService._register(this);
+  }
+
+  ngOnDestroy(): void {
+    this.spinnerService._unregister(this);
   }
 }

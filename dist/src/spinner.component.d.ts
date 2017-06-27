@@ -1,6 +1,6 @@
-import { OnInit, EventEmitter } from '@angular/core';
+import { OnInit, OnDestroy, EventEmitter } from '@angular/core';
 import { SpinnerService } from './spinner.service';
-export declare class SpinnerComponent implements OnInit {
+export declare class SpinnerComponent implements OnInit, OnDestroy {
     private spinnerService;
     constructor(spinnerService: SpinnerService);
     name: string;
@@ -10,4 +10,5 @@ export declare class SpinnerComponent implements OnInit {
     show: boolean;
     showChange: EventEmitter<{}>;
     ngOnInit(): void;
+    ngOnDestroy(): void;
 }
