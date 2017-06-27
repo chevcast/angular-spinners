@@ -1,6 +1,6 @@
 {
   "name": "angular-spinners",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "Easy loading spinner management for apps running Angular 2+",
   "main": "bundles/angular-spinners.umd.js",
   "module": "index.js",
