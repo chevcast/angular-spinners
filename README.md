@@ -51,6 +51,8 @@ export class YourService {
 }
 ```
 
+Here is a [working demo](https://embed.plnkr.co/jgHVBg7nwqThktFwcuHj/).
+
 ---
 
 ### Spinner Component
