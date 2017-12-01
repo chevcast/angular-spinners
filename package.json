@@ -1,6 +1,6 @@
 {
   "name": "@chevtek/angular-spinners",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "Easy loading spinner management for apps running Angular 2+",
   "main": "dist/bundles/angular-spinners.umd.js",
   "module": "dist/index.js",
