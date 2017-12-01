@@ -1,4 +1,4 @@
-# angular-spinners
+# @chevtek/angular-spinners
 A library for easily managing loading spinners in complex Angular2+ applications.
 
 > ## NOTICE
