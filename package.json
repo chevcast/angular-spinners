@@ -21,7 +21,9 @@
     "angular 2",
     "angular4",
     "spinners",
-    "spinner"
+    "spinner",
+    "loading",
+    "loaders"
   ],
   "author": "Alex Ford",
   "license": "MIT",
