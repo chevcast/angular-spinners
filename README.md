@@ -6,14 +6,14 @@ A library for easily managing loading spinners in complex Angular2+ applications
 
 ### Install
 
-> $ npm i angular-spinners --save
+> $ npm i @chevtek/angular-spinners --save
 
 If you're running npm v8 or higher then `--save` is implied if you don't include it.
 
 ### Quick Start
 
 ```typescript
-import { SpinnerModule } from 'angular-spinners';
+import { SpinnerModule } from '@chevtek/angular-spinners';
 
 @NgModule({
   imports: [
@@ -35,7 +35,7 @@ Next simply drop a spinner directive in your app. The only required attribute is
 Now just inject the `SpinnerService` wherever you need it.
 
 ```typescript
-import { SpinnerService } from 'angular-spinners';
+import { SpinnerService } from '@chevtek/angular-spinners';
 
 @Injectable()
 export class YourService {
@@ -155,7 +155,7 @@ Content projection is the most common way to use the `SpinnerComponent` as it al
 The most common way of interacting with your spinners is via the `spinnerService`. This service can be injected just like any other Angular service. Once you have reference to the service you can take advantage of several methods.
 
 ```typescript
-import { SpinnerService } from 'angular-spinners';
+import { SpinnerService } from '@chevtek/angular-spinners';
 
 @Injectable()
 export class YourService {
