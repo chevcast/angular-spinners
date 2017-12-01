@@ -2,7 +2,7 @@
 A library for easily managing loading spinners in complex Angular2+ applications.
 
 > ## NOTICE
-> angular-spinners v5 or higher is now for Angular 2 or higher. If you are looking to install the old version for Angular 1.x you may run `npm install angular-spinners@3.1.2`. That version is considered deprecated and is no longer supported unless I find a major issue, but feel free to continue using it as it has proven to be quite reliable in Angular 1.x. You will never see changes to the old version of angular-spinners except in the case of potential patch versions (3.1.x) if anything major gets reported for the old version.
+> `@chevtek/angular-spinners` v5 or higher is now for Angular 2 or higher. If you are looking to install the old version for AngularJS 1.x you may run `npm install angular-spinners@3.1.2`. Note the lack of `@chevtek/` in front of the package name. The older versions of this package were not published under the Chevtek scope. That version is considered deprecated and is no longer supported unless I find a major issue, but feel free to continue using it as it has proven to be quite reliable in AngularJS 1.x. You will never see changes to the old version of angular-spinners except in the case of potential patch versions (3.1.x) if anything major gets reported for the old version.
 
 ### Install
 
