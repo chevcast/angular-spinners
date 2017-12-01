@@ -1,6 +1,3 @@
-> ## THIS LIBRARY HAS MOVED
-> This library will no longer be updated under this npm package. Instead it has been moved to [@chevtek/angular-spinners](https://github.com/chevtek/angular-spinners) in order to maintain parity with other libraries by Chevtek.
-
 # angular-spinners
 A library for easily managing loading spinners in complex Angular2+ applications.
 
