@@ -1,36 +1,29 @@
 {
-  "name": "@chevtek/angular-spinners",
-  "version": "5.1.2",
-  "description": "Easy loading spinner management for apps running Angular 2+",
-  "main": "dist/bundles/angular-spinners.umd.js",
-  "module": "dist/index.js",
+  "name": "redevill/angular-spinners",
+  "version": "8.0.0",
+  "description": "Easy loading spinner management for apps running Angular 8",
+  "main": "dist/spinner/bundles/spinner.umd.js",
   "scripts": {
-    "cleanup": "rimraf dist/bundles dist/src dist/index.d.ts dist/index.metadata.json dist/index.js dist/index.js.map dist/LICENSE dist/README.md",
-    "bundle": "rollup -c",
-    "minify": "uglifyjs dist/bundles/angular-spinners.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/angular-spinners.umd.min.js",
     "copy": "copyfiles LICENSE README.md dist",
-    "build": "npm run cleanup && ngc && npm run bundle && npm run minify && npm run copy"
+    "build": "ng build && npm run copy"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/chevtek/angular-spinners.git"
+    "url": "git+ssh://git@github.com/redevill/angular-spinners.git"
   },
-  "keywords": [
-    "angular",
-    "angular2",
-    "angular 2",
-    "angular4",
+  "keywords": [  
+    "angular8",
     "spinners",
     "spinner",
     "loading",
     "loaders"
   ],
-  "author": "Alex Ford",
+  "author": "Original author Alex Ford",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chevtek/angular-spinners/issues"
+    "url": "https://github.com/redevill/angular-spinners/issues"
   },
-  "homepage": "https://github.com/chevtek/angular-spinners#readme",
+  "homepage": "https://github.com/redevill/angular-spinners#readme",
   "dependencies": {
     "@angular/common": "^4.2.4",
     "@angular/core": "^4.2.4",
